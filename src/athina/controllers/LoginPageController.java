@@ -70,7 +70,7 @@ public class LoginPageController implements Initializable {
                 if(p.getUsername().equals(username) && p.getPassword().equals(password))
                 {
                     Athina.user=p;
-                    goToProffesor(event);
+                    gotToMaster(event);
                     return;
                     
                 }
@@ -84,7 +84,7 @@ public class LoginPageController implements Initializable {
                 if(s.getUsername().equals(username) && s.getPassword().equals(password))
                 {
                     Athina.user=s;
-                    goToStudent(event);
+                    gotToMaster(event);
                     return;
                 }
             }
@@ -106,13 +106,13 @@ public class LoginPageController implements Initializable {
     }
     
     
-    //εδω ειναι οι σελιδες των χρηστων
+    //εδω ειναι η κεντρικη σελιδα 
     
     
     public void gotToMaster(ActionEvent event)
     {
         try{
-            Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/athina/views/AdminMainPage.fxml")));
+            Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterPage.fxml")));
             Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setResizable(false);
@@ -124,37 +124,7 @@ public class LoginPageController implements Initializable {
             e.printStackTrace();
         }
     }
-     public void goToStudent(ActionEvent event)
-    {
-        try{
-            Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/athina/views/StudentsPage.fxml")));
-            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.setResizable(false);
-            window.setTitle("Athina");
-            window.show();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-     public void goToProffesor(ActionEvent event)
-    {
-        try{
-            Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/athina/views/ProfessorPage.fxml")));
-            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.setResizable(false);
-            window.setTitle("Athina");
-            window.show();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
+  
     
     
 }
