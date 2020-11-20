@@ -42,11 +42,7 @@ public class MasterPageController implements Initializable {
     @FXML
     AnchorPane pane;
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-    
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      /*if (Athina.user instanceof Student) {
@@ -101,9 +97,9 @@ public class MasterPageController implements Initializable {
      public void myCourses(ActionEvent event){
         
         try{
-            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/ProfessorMyCourses.fxml")));
+            Scene coursesTaughPane = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/ProfessorMyCourses.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(courses);
+            window.setScene(coursesTaughPane);
             window.setResizable(false);
             window.setTitle("Athina - Τα μαθήματά μου");
             window.show();

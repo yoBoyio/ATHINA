@@ -41,21 +41,21 @@ public class ProfessorMyCoursesController implements Initializable {
     @FXML
     private TableView<FormattedProfessorCourses> gradesTable;
     @FXML
-    private TableColumn<FormattedProfessorCourses, String> gradesTableCourse;
+    private TableColumn<FormattedProfessorCourses, String> courseCol;
     @FXML
-    private TableColumn<FormattedProfessorCourses, Integer> gradesTableSemester;
+    private TableColumn<FormattedProfessorCourses, Integer> semesterCol;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gradesTableCourse.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-       gradesTableSemester.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
-       
-       Professor professor = (Professor)Athina.user;
-       ArrayList <Course> myCourses = professor.getCoursesTaught();
-       gradesTable.setItems(formatRegistrations(myCourses));
-       gradesTable.getSortOrder().add(gradesTableSemester);
+      //  gradesTableCourse.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+       //gradesTableSemester.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
+//       
+//       Professor professor = (Professor)Athina.user;
+//       ArrayList <Course> myCourses = professor.getCoursesTaught();
+//       gradesTable.setItems(formatCourseses(myCourses));
+//       gradesTable.getSortOrder().add(gradesTableSemester);
     }    
     
-    private ObservableList<FormattedProfessorCourses> formatRegistrations (ArrayList<Course> courses) {
+    private ObservableList<FormattedProfessorCourses> formatCourseses (ArrayList<Course> courses) {
         
         ObservableList<FormattedProfessorCourses> list = FXCollections.observableArrayList();
         String name = "";
