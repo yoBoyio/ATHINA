@@ -34,7 +34,7 @@ public class Account {
         professors[1] = new Professor("idel", "123","Ignatios", "Deligianis");
         professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou");
         
-        admins[0] = new Admin("gkakou", "123","Georgia", "Kakou");
+            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou");
         
         courses[0] = new Course("072", "Epixeirisiaki Ereuna", 6, 7, professors[0]);
         courses[1] = new Course("023", "Antikeimenostrefis Programmatismos", 6, 2, professors[0]);

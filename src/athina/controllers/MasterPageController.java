@@ -5,6 +5,9 @@
  */
 package athina.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 import athina.models.Admin;
 import athina.Athina;
 import athina.models.Professor;
@@ -46,7 +49,10 @@ public class MasterPageController implements Initializable {
     private Button viewCourseGradesButton;
             
     @FXML
-    private Button adduserButton;    
+    private Button adduserButton;   
+    
+    @FXML   
+    private Label usernameLabel;
     
     @FXML
     private AnchorPane pane;
@@ -64,7 +70,8 @@ public class MasterPageController implements Initializable {
               pane.getChildren().remove(diorthoVathButton);
                pane.getChildren().remove(finalizeGradeButton);
                 pane.getChildren().remove(adduserButton);
-              //pedio user
+                usernameLabel.setText(Athina.user.getUsername());
+                
         }  
         
             else if(Athina.user instanceof Professor)
@@ -72,12 +79,13 @@ public class MasterPageController implements Initializable {
              pane.getChildren().remove(adduserButton);
              pane.getChildren().remove(finalizeGradeButton);
              pane.getChildren().remove(viewCourseGradesButton);
-           //add username field  
+             usernameLabel.setText(Athina.user.getUsername());
         }
             else if (Athina.user instanceof Admin) {
-                pane.getChildren().remove(finalizeGradeButton);
+                pane.getChildren().remove(statistikaButton);
                 pane.getChildren().remove(viewCourseGradesButton);
-                pane.getChildren().remove(adduserButton);
+                pane.getChildren().remove(diorthoVathButton);
+                 usernameLabel.setText("Διαχειριστής");
             
         }
             else{
