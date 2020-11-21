@@ -5,6 +5,7 @@
  */
 package athina.controllers;
 
+import athina.Account;
 import athina.Athina;
 import athina.formatters.FormattedProfessorCourses;
 import athina.models.CourseRegistration;
@@ -22,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,23 +41,26 @@ public class ProfessorMyCoursesController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private TableView<FormattedProfessorCourses> gradesTable;
+    private TableView<FormattedProfessorCourses> tableCourse;
     @FXML
-    private TableColumn<FormattedProfessorCourses, String> gradesTableCourse;
+    private TableColumn<FormattedProfessorCourses, String> courseCol;
     @FXML
-    private TableColumn<FormattedProfessorCourses, Integer> gradesTableSemester;
+    private TableColumn<FormattedProfessorCourses, Integer> semesterCol;
+    @FXML
+    private  Label test;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gradesTableCourse.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-       gradesTableSemester.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
+        courseCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+       semesterCol.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
        
-       Professor professor = (Professor)Athina.user;
+       Professor professor = (Professor)Account.professors[0];
+       //Professor professor = (Professor)Athina.user;
        ArrayList <Course> myCourses = professor.getCoursesTaught();
-       gradesTable.setItems(formatRegistrations(myCourses));
-       gradesTable.getSortOrder().add(gradesTableSemester);
+       tableCourse.setItems(formattCourses(myCourses));
+       tableCourse.getSortOrder().add(semesterCol);
     }    
     
-    private ObservableList<FormattedProfessorCourses> formatRegistrations (ArrayList<Course> courses) {
+    private ObservableList<FormattedProfessorCourses> formattCourses (ArrayList<Course> courses) {
         
         ObservableList<FormattedProfessorCourses> list = FXCollections.observableArrayList();
         String name = "";
@@ -83,5 +88,18 @@ public class ProfessorMyCoursesController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+     
+    public void displayExamsCourse(ActionEvent event){
+               // ObservableList<FormattedProfessorCourses> list = FXCollections.observableArrayList();
+
+         System.out.println( tableCourse.getColumns().getgetSelectionModel().getSelectedItem());
+//         if (list==null){
+//             test.setText("nothing");
+//         }else{
+//             FormattedProfessorCourses formattedProfessorCourses=list.get(0);
+//             String name  = formattedProfessorCourses.getCourseName();
+//             test.setText(name);
+//         }
+         
+    }
 }
