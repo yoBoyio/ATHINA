@@ -10,6 +10,9 @@ import athina.Athina;
 import athina.models.CourseRegistration;
 import athina.models.Professor;
 import  athina.models.Course;
+import athina.models.Exam;
+import athina.models.Student;
+import formatters.FormattedExams;
 import formatters.FormattedProfessorCourses;
 import java.io.IOException;
 import java.net.URL;
@@ -23,10 +26,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -47,27 +53,47 @@ public class ProfessorMyCoursesController implements Initializable {
     @FXML
     private TableColumn<FormattedProfessorCourses, Integer> semesterCol;
     @FXML
+    private TableColumn<FormattedProfessorCourses, String> idCol;
+    @FXML
+    private TableColumn<FormattedProfessorCourses, Integer> ectsCol;
+    @FXML
     private  Label examLbl;
     @FXML
-    private  TableView<FormattedProfessorCourses> tableExams;
+    private  TableView<FormattedExams> tableExams;
     @FXML
-    private TableColumn<FormattedProfessorCourses, String> typeColumn;
+    private TableColumn<FormattedExams, String> typeColumn;
       @FXML
-    private TableColumn<FormattedProfessorCourses, String> yearColumn;
-    
-    
+    private TableColumn<FormattedExams, String> yearColumn;
+    @FXML
+    private Button selectExamBtn;
+     @FXML
+    private Label amLbl;
+      @FXML
+    private Label errorLbl;
+      @FXML
+     private Button  searchStdBtn;
+      @FXML
+    private TextField amField;
+      
+    private  Course ncCourse;
+    private  ArrayList <Course> myCourses;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         courseCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
        semesterCol.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
-       
-       Professor professor = (Professor)Account.professors[0];
-       //Professor professor = (Professor)Athina.user;
-       ArrayList <Course> myCourses = professor.getCoursesTaught();
+       idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+       ectsCol.setCellValueFactory(new PropertyValueFactory<>("credits"));
+       Professor professor = (Professor)Athina.user;
+        myCourses = professor.getCoursesTaught();
        tableCourse.setItems(formattCourses(myCourses));
        tableCourse.getSortOrder().add(semesterCol);
-       tableExams.setVisible(false);
-       examLbl.setVisible(false);
+
+        tableExams.setVisible(false);
+        selectExamBtn.setVisible(false);
+        amField.setVisible(false);
+        amLbl.setVisible(false);
+        searchStdBtn.setVisible(false);
+        
     }    
     
     private ObservableList<FormattedProfessorCourses> formattCourses (ArrayList<Course> courses) {
@@ -75,12 +101,14 @@ public class ProfessorMyCoursesController implements Initializable {
         ObservableList<FormattedProfessorCourses> list = FXCollections.observableArrayList();
         String name = "";
         int semester = 0;
-        
+        String id="";
+        int ects;
         for(Course r: courses){
             name = r.getName();
             semester = r.getSemester();
-            
-            list.add(new FormattedProfessorCourses(name, semester));
+            id = r.getId();
+            ects = r.getCredits();
+            list.add(new FormattedProfessorCourses(name, semester,id,ects));
         }
         
         return list;
@@ -100,19 +128,83 @@ public class ProfessorMyCoursesController implements Initializable {
     }
      
     public void displayExamsCourse(ActionEvent event){
-               // ObservableList<FormattedProfessorCourses> list = FXCollections.observableArrayList();
          FormattedProfessorCourses formattedProfessorCourses= tableCourse.getSelectionModel().getSelectedItem();
          
          if (formattedProfessorCourses==null){
-             examLbl.setText("Επελεξτε μαθημα");
-         }else{
-             examLbl.setVisible(true);
-             tableExams.setVisible(true);
-
-             String name  = formattedProfessorCourses.getCourseName();
              
+             errorLbl.setText("Επιλεξτε μαθημα");
+         }else{
+            errorLbl.setText("");
+
+            tableExams.setVisible(true);
+            selectExamBtn.setVisible(true);
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+            yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+            String course  = formattedProfessorCourses.getCourseName();
+            examLbl.setText(course);
+             ncCourse = null;
+            for (Course c : myCourses){
+                if (c.getName().equals(course)){
+                    ncCourse=c;
+                }
+            }
+            ArrayList <Exam> examinedArrayList=ncCourse.getExams();
+            tableExams.setItems(formattExams(examinedArrayList));
+            tableExams.getSortOrder().add(yearColumn);             
          }
          
+    }
+    private ObservableList<FormattedExams> formattExams (ArrayList<Exam> exams) {
+        
+        ObservableList<FormattedExams> list = FXCollections.observableArrayList();
+        String year = "";
+        String type = "";
+        String id="";
+        for(Exam e: exams){
+            year =e.getYear();
+            type = e.getType();  
+            id = e.getId();
+            list.add(new FormattedExams(year, type,id));
+        }     
+        return list;
+    }
+    public void displayAMform(ActionEvent event){
+       FormattedExams formattedExams= tableExams.getSelectionModel().getSelectedItem();
+
+        if (formattedExams!=null) {
+            errorLbl.setText("");
+            amField.setVisible(true);
+            amLbl.setVisible(true);
+            searchStdBtn.setVisible(true);
+
+        }else{
+            errorLbl.setText("Επιλεξτε εξεταστικη");
+        }
+         
+      
+    }
+    
+    public  void searchAM() {
+        FormattedExams formattedExams= tableExams.getSelectionModel().getSelectedItem();
+        String selectedId=formattedExams.getId();
+        String am=amField.getText();
+        if (am!=null){
+            CourseRegistration [] cr= Account.registrations ;
+            for(CourseRegistration c:cr){
+                if (c!=null) {
+                   if(c.getStudent().getAM().equals(am) && c.getCourse()==ncCourse ){
+                      ArrayList<Exam> currentE= c.getCourse().getExams();
+                       for (Exam e: currentE) {
+                           if(e.getId().equals(selectedId))
+                                 System.out.println(c.getGrade());
+                    }
+                }
+                      
+                }
+            }
+        }else if(am.isEmpty())
+            errorLbl.setText("Συμπληρωστε ΑΜ");
+        else errorLbl.setText("Το ΑΜ δεν βρεθηκε");
     }
 }
 
