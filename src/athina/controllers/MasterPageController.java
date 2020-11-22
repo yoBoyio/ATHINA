@@ -98,7 +98,20 @@ public class MasterPageController implements Initializable {
         
         
     }    
-    
+      public void myCourses(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/ProfessorMyCourses.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Τα μαθήματά μου");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
     
    public void logoutButtonPressed(ActionEvent event)
    {

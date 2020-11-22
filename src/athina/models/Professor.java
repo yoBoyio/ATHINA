@@ -5,6 +5,7 @@
  */
 package athina.models;
 
+import athina.Account;
 import java.util.ArrayList;
 
 /**
@@ -17,23 +18,23 @@ public class Professor extends  User{
     public Professor(String username,String password, String firstName, String lastName) {
         super(username, password, firstName, lastName);
     }
-     /* public  ArrayList<Course> getCoursesTaught(){
+     public  ArrayList<Course> getCoursesTaught(){
         int i=0;
         ArrayList<Course> courses =new  ArrayList<>();
        
       while(Account.courses[i]!=null){
             if(Account.courses[i].getProfessor().equals(this))
-                courses.add(Account.courses[i])
+                courses.add(Account.courses[i]);
             i++;
         }
         return courses;
-    }*/
+    }
     public void setCoursesTaught(Course[] coursesTaught) {
         this.coursesTaught = coursesTaught;
     }
     
     
-    
+  
     
      @Override
     public String toString() {
