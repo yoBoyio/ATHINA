@@ -11,17 +11,15 @@ package formatters;
 public class FormattedProfessorCourses {
     private String courseName;
     private int courseSemester;
-    private String username;
-    private String surname;
-    private String name;
-    private float grade;
-    private String dateExamined;
-    private String dateRegistered;
+    private int  credits;
+    private String id;
     
    
-    public FormattedProfessorCourses(String courseName, int courseSemester) {
+    public FormattedProfessorCourses(String courseName, int courseSemester,String id,int credits) {
         this.courseName = courseName;
         this.courseSemester = courseSemester;
+        this.id=id;
+        this.credits=credits;
      
     }
     
@@ -33,28 +31,16 @@ public class FormattedProfessorCourses {
         return courseSemester;
     }
 
-    public String getUsername() {
-        return username;
+
+
+    public int getCredits() {
+        return credits;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getId() {
+        return id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public float getGrade() {
-        return grade;
-    }
-
-    public String getDateExamined() {
-        return dateExamined;
-    }
-
-    public String getDateRegistered() {
-        return dateRegistered;
-    }
     
 }

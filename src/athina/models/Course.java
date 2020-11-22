@@ -5,6 +5,9 @@
  */
 package athina.models;
 
+import athina.Account;
+import java.util.ArrayList;
+
 /**
  *
  * @author dimi44
@@ -15,6 +18,7 @@ public class Course {
     private  int credits;
     private int semester;
     private Professor professor;
+    private  Exam [] exams;
    
     public  Course(String id){
         this.id=id;
@@ -25,10 +29,37 @@ public class Course {
         this.credits = credits;
         this.semester = semester;
         this.professor = professor;
+        this.exams=new Exam[30];
     }
-    //todo registration 
+    public void  setExam(Exam exam){
+        
+       
+        int i =0;
+        for(Exam e: exams){
+           if(e==null){
+              this.exams[i]=exam;
+              break;
+            }
+           i++;
+       }
+    }
+    //todo registration
+   
+    
      public String getName() {
         return name;
+    }
+    public  ArrayList<Exam> getExams(){
+        int i=0;
+        ArrayList<Exam> examList =new  ArrayList<>();
+       
+      while(exams[i]!=null){
+            examList.add(this.exams[i]);
+            i++;
+        }
+        return examList;
+    }
+    public Course() {
     }
 
     public String getId() {

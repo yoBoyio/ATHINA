@@ -5,6 +5,8 @@
  */
 package athina.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dimi44
@@ -14,20 +16,40 @@ public class Exam {
     private Course [] courses;
     private String year;
     private String type;
-
-    public Exam (Course course,String date, String type){
-        this.year=date;
+    private  String id;
+    
+    public Exam (String year, String type,String id){
+        this.year=year;
         this.type=type;
-        addCourses(course);
+        this.id=id;
+        this.courses=new Course[10];
     }
-    public Exam (String date, String type){
-        this.year=date;
-        this.type=type;
+     
+    
+    public void  setCourse(Course course){
         
+       
+        int i =0;
+        for(Course c: courses){
+           if(c==null){
+              this.courses[i]=course;
+              course.setExam(this);
+              break;
+            }
+           i++;
+       }
     }
-    public Course[] getCourses() {
-        return courses;
+     public  ArrayList<Course> getCourses(){
+        int i=0;
+        ArrayList<Course> coursesList =new  ArrayList<>();
+       
+      while(courses[i]!=null){
+            coursesList.add(this.courses[i]);
+            i++;
+        }
+        return coursesList;
     }
+    
 
     public void addCourses(Course course) {
         for(int i=0;i<courses.length;i++)
@@ -37,12 +59,12 @@ public class Exam {
             }   
     }
 
-    public String getDate() {
+    public String getYear() {
         return year;
     }
 
-    public void setDate(String date) {
-        this.year = date;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getType() {
@@ -52,5 +74,7 @@ public class Exam {
     public void setType(String type) {
         this.type = type;
     }
-    
+     public String getId() {
+        return id;
+    }
 }

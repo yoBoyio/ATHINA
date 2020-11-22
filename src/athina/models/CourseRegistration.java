@@ -14,7 +14,7 @@ public class CourseRegistration {
     private Course course;
     private String registrationSemester;
     private float grade;
-    private String dateExamined;
+    private Exam examined;
     private String dateRegistered;
     
     public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered) {
@@ -38,14 +38,15 @@ public class CourseRegistration {
 
     public void setGrade(float grade) {
         this.grade = grade;
+      
     }
     
-    public void setDateExamined(String date) {
-        this.dateExamined = date;
+    public void setDateExamined(Exam date) {
+        this.examined = date;
     }
     
-    public String getDateExamined() {
-        return dateExamined;
+    public Exam getDateExamined() {
+        return examined;
     }
     
     public String getDateRegistered() {
