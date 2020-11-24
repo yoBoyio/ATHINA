@@ -17,6 +17,7 @@ public class Account {
     public static Course[] courses;
     public static CourseRegistration[] registrations;
     public static Exam[] exams;
+    public static  AitimaDiorthosisGrade requestNewGrade[];
     
     public Account() {
         students = new Student[50];
@@ -25,6 +26,7 @@ public class Account {
         courses = new Course[30];
         registrations = new CourseRegistration[50];
         exams= new Exam[10];
+        requestNewGrade=new AitimaDiorthosisGrade[10];
     }
     
     public void initializeData(){
@@ -64,44 +66,14 @@ public class Account {
         
 
     }
-    public static void insertAdmin(Admin admin) {
-        for (int i=0; i<admins.length; i++){
-            if (admins[i] == null)
-                admins[i] = admin;
+    public static void newRequest(AitimaDiorthosisGrade request) {
+        for (int i=0; i<requestNewGrade.length; i++){
+            if (requestNewGrade[i] == null)
+                requestNewGrade[i] = request;
         }
     }
     
-    
-    public static void insertProfessor(Professor professor) {
-        for (int i=0; i<professors.length; i++){
-            if (professors[i] == null)
-                professors[i] = professor;
-        }
-    }
-     public static void insertStudent(Student student) {
-        for (int i=0; i<students.length; i++) {
-            if (students[i] == null)
-                students[i] = student;
-        }
-    }
-         public static void insertCourse(Course course) {
-        for (int i=0; i<courses.length; i++) {
-            if (courses[i] == null)
-            {
-                courses[i] = course;
-                return;
-            }
-        }
-    }
-         
-     public static void insertRegistration(Student student, Course course) {
-        for(int i=0; i<registrations.length; i++){
-            if (registrations[i] == null) {
-                registrations[i] = new CourseRegistration(student, course, "2018-19 XEIM","20/11/2020");
-            }
-        }
-        
-    }
+  
     public static Course[] getFullCourse() {
         Course fullCourse[]=new Course[30];
         int i =0;
