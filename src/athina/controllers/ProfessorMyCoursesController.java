@@ -77,6 +77,8 @@ public class ProfessorMyCoursesController implements Initializable {
       
     private  Course ncCourse;
     private  ArrayList <Course> myCourses;
+    public  CourseRegistration selectedReg;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         courseCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -179,32 +181,49 @@ public class ProfessorMyCoursesController implements Initializable {
 
         }else{
             errorLbl.setText("Επιλεξτε εξεταστικη");
-        }
-         
-      
+        }  
     }
     
-    public  void searchAM() {
+    public  void searchAM(ActionEvent event) {
         FormattedExams formattedExams= tableExams.getSelectionModel().getSelectedItem();
         String selectedId=formattedExams.getId();
         String am=amField.getText();
-        if (am!=null){
+        if (!am.isEmpty()){
             CourseRegistration [] cr= Account.registrations ;
             for(CourseRegistration c:cr){
                 if (c!=null) {
                    if(c.getStudent().getAM().equals(am) && c.getCourse()==ncCourse ){
                       ArrayList<Exam> currentE= c.getCourse().getExams();
                        for (Exam e: currentE) {
-                           if(e.getId().equals(selectedId))
-                                 System.out.println(c.getGrade());
+                           if(e.getId().equals(selectedId)){
+                                 selectedReg=c;
+                                 gotoDiorthosi(event);
+                                 break;
+                           }
+                        }
                     }
-                }
                       
                 }
             }
         }else if(am.isEmpty())
             errorLbl.setText("Συμπληρωστε ΑΜ");
         else errorLbl.setText("Το ΑΜ δεν βρεθηκε");
+    }
+    
+    public void gotoDiorthosi(ActionEvent event){
+        try {
+            DiorthosiVathmologiasPage.selectedRegistration = selectedReg;
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/DiorthosiVathmologiasPage.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.setTitle("Athina");
+            window.show();
+      
+        }catch(IOException e){
+            e.printStackTrace();
+
+        }
     }
 }
 
