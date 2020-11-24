@@ -14,12 +14,13 @@ import java.util.ArrayList;
 public class Student extends User{
      private int currentSemester;
     private String dateEnrolled;
+    private  String am;
     
     public Student(String username,String password, String firstName,
-        String lastName,int currentSemester,String dateEnrolled) {
+        String lastName,int currentSemester,String am) {
         super(username, password, firstName, lastName);
         this.currentSemester = currentSemester;
-        this.dateEnrolled = dateEnrolled;
+        this.am = am;
     }
     
     /*public ArrayList<CourseRegistration> getRegistrations(){
@@ -28,7 +29,9 @@ public class Student extends User{
         
     }*/
     
-    
+    public String getAM(){
+        return am;
+    }
      public int getCurrentSemester() {
         return currentSemester;
     }
