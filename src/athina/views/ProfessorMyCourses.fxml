@@ -25,7 +25,7 @@
         </columns>
       </TableView>
       <Button fx:id="exetastikeBtn" layoutX="759.0" layoutY="134.0" mnemonicParsing="false" onAction="#displayExamsCourse" prefHeight="25.0" prefWidth="142.0" text="Εξεταστικες" />
-      <Label fx:id="examLbl" layoutX="360.0" layoutY="408.0" prefHeight="36.0" prefWidth="241.0">
+      <Label fx:id="examLbl" layoutX="192.0" layoutY="408.0" prefHeight="36.0" prefWidth="497.0">
          <font>
             <Font size="25.0" />
          </font>

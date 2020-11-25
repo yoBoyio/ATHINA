@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/formatters/FormattedStudent.java</file>
+            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/models/AitimaDiorthosisGrade.java</file>
             <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/controllers/DiorthosiVathmologiasPage.java</file>
+            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/models/CourseRegistration.java</file>
+            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/Athina.java</file>
+            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/models/Exam.java</file>
             <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/controllers/ProfessorMyCoursesController.java</file>
             <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/views/DiorthosiVathmologiasPage.fxml</file>
             <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/formatters/FormattedProfessorCourses.java</file>
             <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/Account.java</file>
+            <file>file:/C:/Users/dimi44/Documents/NetBeansProjects/athina/src/athina/controllers/Examined.java</file>
         </group>
     </open-files>
 </project-private>

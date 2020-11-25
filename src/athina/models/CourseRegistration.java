@@ -5,6 +5,9 @@
  */
 package athina.models;
 
+import athina.controllers.Examined;
+import java.util.ArrayList;
+
 /**
  *
  * @author dimi44
@@ -14,14 +17,17 @@ public class CourseRegistration {
     private Course course;
     private String registrationSemester;
     private float grade;
-    private Exam examined;
+    private Examined examined [];
     private String dateRegistered;
+    private String id;
     
-    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered) {
+    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered,String id) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
         this.dateRegistered = dateRegistered;
+        this.examined=new Examined[10];
+        this.id=id;
     }
 
     public Student getStudent() {
@@ -41,12 +47,27 @@ public class CourseRegistration {
       
     }
     
-    public void setDateExamined(Exam date) {
-        this.examined = date;
+    public void setExamined(Examined examination) {
+       int i =0;
+        for(Examined e: examined){
+           if(e==null){
+              this.examined[i]=examination;
+              break;
+            }
+           i++;
+       }
     }
     
-    public Exam getDateExamined() {
-        return examined;
+    public ArrayList<Examined> getExamined() {
+       
+        int i=0;
+        ArrayList<Examined> examList =new  ArrayList<>();
+       
+      while(examined[i]!=null){
+            examList.add(this.examined[i]);
+            i++;
+        }
+        return examList;
     }
     
     public String getDateRegistered() {

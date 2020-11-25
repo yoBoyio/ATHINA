@@ -10,6 +10,7 @@ import athina.Athina;
 import athina.models.AitimaDiorthosisGrade;
 import athina.models.Course;
 import athina.models.CourseRegistration;
+import athina.models.Exam;
 import athina.models.Professor;
 import athina.models.Student;
 import formatters.FormattedProfessorCourses;
@@ -44,7 +45,8 @@ public class DiorthosiVathmologiasPage implements Initializable {
      * Initializes the controller class.
      */
     public static  CourseRegistration selectedRegistration;
-    
+        public  static Exam globExam;
+
     @FXML
     private TableView<FormattedStudent> gradeTable;
     @FXML
@@ -58,7 +60,8 @@ public class DiorthosiVathmologiasPage implements Initializable {
     @FXML
     private  TextField newGradeLbl;
     @FXML
-    private Label errorLbl;
+    private  Label errorLbl;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,13 +82,19 @@ public class DiorthosiVathmologiasPage implements Initializable {
         String name = "";
         String am="";
         String surname="";
-        Float grade ;
+        float grade =0;
         Student student=courseRegistration.getStudent();
-            name = student.getFirstName();
-            am =student.getAM();
-            surname = student.getLastName();
-            grade = courseRegistration.getGrade();
-            list.add(new FormattedStudent(am,name, surname,grade));
+        name = student.getFirstName();
+        am =student.getAM();
+        surname = student.getLastName();
+         grade = courseRegistration.getGrade();
+        ArrayList<Examined> e=courseRegistration.getExamined();
+//        for(Examined ex:e){
+//                if (ex.getExam().getId().equals(globExam.getId())){ 
+//                    grade=ex.getGrade();
+//                    break;}
+//         }
+        list.add(new FormattedStudent(am,name, surname,grade));
         return list;
     }
        public void backButtonPressed(ActionEvent event) {
@@ -111,14 +120,13 @@ public class DiorthosiVathmologiasPage implements Initializable {
                    errorLbl.setText("Ο βαθμος πρεπει να ειναι μεταξυ 0-10");
                     return;
                  }
-                // errorLbl.setText("Το αιτημα σας υποβλθηκε στην γραμματεια");
+                 errorLbl.setText("Το αιτημα σας υποβλθηκε στην γραμματεια");
                 Professor professor= (Professor)Athina.user;
-                AitimaDiorthosisGrade newReq=new AitimaDiorthosisGrade(selectedRegistration, professor, grade);
+                AitimaDiorthosisGrade newReq=new AitimaDiorthosisGrade(selectedRegistration, professor, grade,globExam);
                 Account.newRequest(newReq);
           }catch(NumberFormatException e){
               errorLbl.setText("Ωχ κατι πηγε στραβα");
           }
-              
-         
+             
       }
 }
