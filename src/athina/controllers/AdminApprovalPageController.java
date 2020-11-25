@@ -68,7 +68,7 @@ public class AdminApprovalPageController implements Initializable {
        approvalTable.setItems(formattedRequests(reng));
                 
     } 
-    //
+    
      private ObservableList<FormattedRequest> formattedRequests (ArrayList<AitimaDiorthosisGrade> request) {  
         ObservableList<FormattedRequest> list = FXCollections.observableArrayList();
         String proffessorName = "";
@@ -76,14 +76,17 @@ public class AdminApprovalPageController implements Initializable {
         float oldGrade = 0;
         float newGrade = 0;
         String exam="";
-        CourseRegistration cr;
+        String regid="";
+        int index=0;
         for(AitimaDiorthosisGrade req: request){
             proffessorName = req.getProfessor().getUsername();
             studentName=req.getCourseRegistration().getStudent().getAM();
             oldGrade=req.getCourseRegistration().getGrade();
             newGrade=req.getGrade();
             exam=req.getExam().getId();
-            list.add(new FormattedRequest(proffessorName, studentName,oldGrade,newGrade,exam));
+            regid=req.getCourseRegistration().getId();
+            list.add(new FormattedRequest(proffessorName, studentName,oldGrade,newGrade,exam,regid,index));
+            index++;
         }
         
         return list;
@@ -106,6 +109,20 @@ public class AdminApprovalPageController implements Initializable {
            FormattedRequest formattedRequest= approvalTable.getSelectionModel().getSelectedItem();
            if(formattedRequest==null){
                errorLabel.setText("Επιλεξτε μια διορθωση");
+           }else{
+               String regID=formattedRequest.getRegId();
+                CourseRegistration [] courseRegistration=Account.registrations;
+                int i=0;
+                for(CourseRegistration cr:courseRegistration){
+                    if(cr.getId().equals(regID)){
+                        Account.registrations[i].setGrade(formattedRequest.getNewGrade());
+                        Account.requestNewGrade[formattedRequest.getReqIndex()]=null;
+                        errorLabel.setText("Το αιτημα εγκριθηκε");
+                        approvalTable.getItems().removeAll(formattedRequest);
+                    }
+                    i++;
+                    
+                }
            }
 
       }

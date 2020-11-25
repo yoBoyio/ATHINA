@@ -29,7 +29,9 @@ public class CourseRegistration {
         this.examined=new Examined[10];
         this.id=id;
     }
-
+    public String getId(){
+        return id;
+    }
     public Student getStudent() {
         return student;
     }
