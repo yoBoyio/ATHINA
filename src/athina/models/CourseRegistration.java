@@ -19,13 +19,15 @@ public class CourseRegistration {
     private float grade;
     private Examined examined [];
     private String dateRegistered;
+    private String id;
     
-    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered) {
+    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered,String id) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
         this.dateRegistered = dateRegistered;
         this.examined=new Examined[10];
+        this.id=id;
     }
 
     public Student getStudent() {

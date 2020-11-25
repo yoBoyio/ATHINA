@@ -6,6 +6,7 @@
 package athina;
 import athina.controllers.Examined;
 import  athina.models.*;
+import java.util.ArrayList;
 /**
  *
  * @author dimi44
@@ -46,10 +47,10 @@ public class Account {
         courses[2] = new Course("071", "Mhxaniki Logismikou", 6,7, professors[1]);
         courses[3] = new Course("044", "Sxediash Leitourgikwn Systimatwn", 6, 4, professors[2]);
         
-        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 ΕΑΡ","20/5/2019");
-        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM","20/11/2020");
-        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 ΕΑΡ","20/5/2019");
-        registrations[3] = new CourseRegistration(students[2], courses[3], "2018-19 XEIM","20/11/2020");
+        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 ΕΑΡ","20/5/2019","r1");
+        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM","20/11/2020","r2");
+        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 ΕΑΡ","20/5/2019","r3");
+        registrations[3] = new CourseRegistration(students[2], courses[3], "2018-19 XEIM","20/11/2020","r4");
         
         
         
@@ -61,7 +62,7 @@ public class Account {
         
         registrations[1].setGrade(5);
         
-        registrations[1].setExamined(new Examined(exams[0], 5));
+        registrations[1].setExamined(new Examined(exams[0], 5f));
         registrations[2].setExamined(new Examined(exams[1], 6));
         exams[0].setCourse(courses[1]);
         exams[4].setCourse(courses[1]);
@@ -77,7 +78,17 @@ public class Account {
         }
     }
     
-  
+   public static ArrayList <AitimaDiorthosisGrade> getRequests() {
+       ArrayList <AitimaDiorthosisGrade> fullReq=new ArrayList();
+        int i =0;
+        for(AitimaDiorthosisGrade req : requestNewGrade){
+            
+            if (req != null) 
+                fullReq.add(req);
+            i++;
+        }
+        return fullReq;
+    }
     public static Course[] getFullCourse() {
         Course fullCourse[]=new Course[30];
         int i =0;

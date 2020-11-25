@@ -122,7 +122,7 @@ public class DiorthosiVathmologiasPage implements Initializable {
                  }
                  errorLbl.setText("Το αιτημα σας υποβλθηκε στην γραμματεια");
                 Professor professor= (Professor)Athina.user;
-                AitimaDiorthosisGrade newReq=new AitimaDiorthosisGrade(selectedRegistration, professor, grade);
+                AitimaDiorthosisGrade newReq=new AitimaDiorthosisGrade(selectedRegistration, professor, grade,globExam);
                 Account.newRequest(newReq);
           }catch(NumberFormatException e){
               errorLbl.setText("Ωχ κατι πηγε στραβα");

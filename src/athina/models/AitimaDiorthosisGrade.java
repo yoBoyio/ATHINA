@@ -13,11 +13,12 @@ public class AitimaDiorthosisGrade {
     private  CourseRegistration courseRegistration;
     private Professor professor;
     private  float  grade;
-    
-    public AitimaDiorthosisGrade(CourseRegistration courseRegistration,Professor professor,float  grade){
+    private  Exam exam;
+    public AitimaDiorthosisGrade(CourseRegistration courseRegistration,Professor professor,float  grade,Exam exam){
         this.courseRegistration=courseRegistration;
         this.professor=professor;
         this.grade=grade;
+        this.exam=exam;
     }
 
     public CourseRegistration getCourseRegistration() {
@@ -43,6 +44,8 @@ public class AitimaDiorthosisGrade {
     public void setGrade(float grade) {
         this.grade = grade;
     }
-    
+    public Exam getExam() {
+        return exam;
+    }
     
 }
