@@ -67,9 +67,8 @@ public class Account {
         exams[0].setCourse(courses[1]);
         exams[4].setCourse(courses[1]);
         exams[1].setCourse(courses[2]);
-        
-
     }
+    
     public static void newRequest(AitimaDiorthosisGrade request) {
         for (int i=0; i<requestNewGrade.length; i++){
             if (requestNewGrade[i] == null)

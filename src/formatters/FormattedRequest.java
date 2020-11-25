@@ -15,15 +15,24 @@ public class FormattedRequest {
     private  float  oldGrade;
     private float newGrade;
     private String exam;
+    private  String regid;
+    private  int reqInxed;
     
-    public FormattedRequest(String professorName,String studentName,float  oldGrade,float newGrade,String exam){
+    public FormattedRequest(String professorName,String studentName,float  oldGrade,float newGrade,String exam,String regid,int reqInxed){
         this.professorName=professorName;
         this.studentName=studentName;
         this.oldGrade=oldGrade;
         this.newGrade=newGrade;
         this.exam=exam;
+        this.regid=regid;
+        this.reqInxed=reqInxed;
     }
-
+    public  int getReqIndex(){
+        return reqInxed;
+    }
+    public String getRegId(){
+        return  regid;
+    }
     public String getProfessorName() {
         return professorName;
     }
