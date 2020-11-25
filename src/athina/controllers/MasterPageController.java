@@ -128,5 +128,21 @@ public class MasterPageController implements Initializable {
        {
            e.printStackTrace();
        } 
-   }   
+   }  
+   
+   public void reqApprovalPressed(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AdminApprovalPage.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Οριστικοποιηση βαθμολογιας");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+   
 }

@@ -15,7 +15,7 @@
       <Button fx:id="logoutbutton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutButtonPressed" text="Logout" />
       <Button fx:id="statistikaButton" layoutX="189.0" layoutY="93.0" mnemonicParsing="false" text="Στατιστηκά Στοιχεία απο Βαθμολογίες" />
       <Button fx:id="diorthoVathButton" layoutX="188.0" layoutY="137.0" mnemonicParsing="false" onAction="#myCourses" text="Διορθωτική Βαθμολογία" />
-      <Button fx:id="finalizeGradeButton" layoutX="188.0" layoutY="215.0" mnemonicParsing="false" text="Οριστικοποίηση διόρθωσεις βαθμολογιάς" />
+      <Button fx:id="finalizeGradeButton" layoutX="188.0" layoutY="215.0" mnemonicParsing="false" onAction="#reqApprovalPressed" text="Οριστικοποίηση διόρθωσεις βαθμολογιάς" />
       <Button fx:id="viewCourseGradesButton" layoutX="183.0" layoutY="268.0" mnemonicParsing="false" text="Προβολή μαθήματων/βαθμολογιών" />
       <Button fx:id="adduserButton" layoutX="189.0" layoutY="175.0" mnemonicParsing="false" text="Καταχώρηση νέων χρηστών" />
       <Label fx:id="usernameLabel" layoutX="415.0" layoutY="14.0" prefHeight="32.0" prefWidth="171.0" textFill="#4a4a4a">
