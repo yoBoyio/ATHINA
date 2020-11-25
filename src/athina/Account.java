@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package athina;
+import athina.controllers.Examined;
 import  athina.models.*;
 /**
  *
@@ -24,7 +25,7 @@ public class Account {
         professors = new Professor[20];
         admins = new Admin[10];
         courses = new Course[30];
-        registrations = new CourseRegistration[50];
+        registrations = new CourseRegistration[10];
         exams= new Exam[10];
         requestNewGrade=new AitimaDiorthosisGrade[10];
     }
@@ -60,6 +61,8 @@ public class Account {
         
         registrations[1].setGrade(5);
         
+        registrations[1].setExamined(new Examined(exams[0], 5));
+        registrations[2].setExamined(new Examined(exams[1], 6));
         exams[0].setCourse(courses[1]);
         exams[4].setCourse(courses[1]);
         exams[1].setCourse(courses[2]);
@@ -70,6 +73,7 @@ public class Account {
         for (int i=0; i<requestNewGrade.length; i++){
             if (requestNewGrade[i] == null)
                 requestNewGrade[i] = request;
+                break;
         }
     }
     

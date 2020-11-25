@@ -78,7 +78,7 @@ public class ProfessorMyCoursesController implements Initializable {
     private  Course ncCourse;
     private  ArrayList <Course> myCourses;
     public  CourseRegistration selectedReg;
-    
+    private Exam globExam;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         courseCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -193,26 +193,33 @@ public class ProfessorMyCoursesController implements Initializable {
             for(CourseRegistration c:cr){
                 if (c!=null) {
                    if(c.getStudent().getAM().equals(am) && c.getCourse()==ncCourse ){
-                      ArrayList<Exam> currentE= c.getCourse().getExams();
-                       for (Exam e: currentE) {
-                           if(e.getId().equals(selectedId)){
+                      ArrayList<Examined> currentE= c.getExamined();
+                       for (Examined e: currentE) {
+                          Exam sExam= e.getExam();
+                           if(sExam.getId().equals(selectedId)){
                                  selectedReg=c;
+                                 globExam= sExam;
                                  gotoDiorthosi(event);
                                  break;
                            }
                         }
                     }
                       
+                }else{
+                    errorLbl.setText("Το ΑΜ δεν βρεθηκε για την επιλεγμενη εξεταστικη");
                 }
             }
         }else if(am.isEmpty())
             errorLbl.setText("Συμπληρωστε ΑΜ");
-        else errorLbl.setText("Το ΑΜ δεν βρεθηκε");
+        else
+           errorLbl.setText("Το ΑΜ δεν βρεθηκε");
+
     }
     
     public void gotoDiorthosi(ActionEvent event){
         try {
             DiorthosiVathmologiasPage.selectedRegistration = selectedReg;
+            DiorthosiVathmologiasPage.globExam=globExam;
             Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/DiorthosiVathmologiasPage.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
