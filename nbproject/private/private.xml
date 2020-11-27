@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexz/Desktop/JavaApplication2/src/athina/Athina.java</file>
-            <file>file:/C:/Users/alexz/Desktop/JavaApplication2/src/models/SMTP.java</file>
-            <file>file:/C:/Users/alexz/Desktop/JavaApplication2/src/controllers/ProfessorMainPage.java</file>
+            <file>file:/C:/Users/alexz/Desktop/net/ATHINA/src/athina/controllers/DiorthosiVathmologiasPage.java</file>
+            <file>file:/C:/Users/alexz/Desktop/net/ATHINA/src/athina/controllers/AdminApprovalPageController.java</file>
         </group>
     </open-files>
 </project-private>

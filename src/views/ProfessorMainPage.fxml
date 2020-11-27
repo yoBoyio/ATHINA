@@ -104,5 +104,23 @@
             <TextArea fx:id="statistics" editable="false" layoutX="396.0" layoutY="188.0" prefHeight="279.0" prefWidth="274.0" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="diorthMath" layoutX="198.0" layoutY="8.0" prefHeight="471.0" prefWidth="675.0" style="-fx-background-color: white;">
+         <children>
+            <ChoiceBox fx:id="choiceBoxHmer1" layoutX="407.0" layoutY="98.0" prefHeight="25.0" prefWidth="224.0" />
+            <TextField alignment="CENTER" layoutX="219.0" layoutY="14.0" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: white;" text="Μαθήματα">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <ChoiceBox fx:id="choiceBoxMath1" layoutX="41.0" layoutY="98.0" prefHeight="25.0" prefWidth="224.0" />
+            <ListView fx:id="studensList1" layoutX="4.0" layoutY="190.0" prefHeight="279.0" prefWidth="668.0" />
+            <TextField fx:id="amField1" layoutX="91.0" layoutY="144.0" />
+            <Label layoutX="246.0" layoutY="148.0" text="ΑΜ" />
+            <Button fx:id="searchBtn1" layoutX="41.0" layoutY="144.0" mnemonicParsing="false" onAction="#searchStudent" text="Ψάξε" />
+            <Button fx:id="diorthBtn" layoutX="559.0" layoutY="157.0" mnemonicParsing="false" text="Διόρθωση" />
+            <Label layoutX="41.0" layoutY="75.0" text="Μάθημα" />
+            <Label layoutX="407.0" layoutY="75.0" text="Εξάμηνο" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
