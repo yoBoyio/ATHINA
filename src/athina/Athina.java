@@ -5,23 +5,19 @@
  */
 package athina;
 
-import athina.models.User;
+import models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author dimi44
- */
 public class Athina extends Application {
     public static User user;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/athina/views/LoginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/LoginPage.fxml"));
         
         Scene scene = new Scene(root);
         
