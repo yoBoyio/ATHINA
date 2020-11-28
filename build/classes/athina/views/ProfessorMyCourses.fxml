@@ -44,7 +44,7 @@
          </font>
       </Label>
       <Button fx:id="searchStdBtn" layoutX="455.0" layoutY="752.0" mnemonicParsing="false" onAction="#searchAM" prefHeight="25.0" prefWidth="74.0" text="Ψαξε" />
-      <Label fx:id="errorLbl" layoutX="197.0" layoutY="855.0" prefHeight="36.0" prefWidth="368.0">
+      <Label fx:id="errorLbl" layoutX="197.0" layoutY="855.0" prefHeight="36.0" prefWidth="460.0">
          <font>
             <Font size="23.0" />
          </font>

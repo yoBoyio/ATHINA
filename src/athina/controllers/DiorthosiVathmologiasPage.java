@@ -5,6 +5,7 @@
  */
 package athina.controllers;
 
+import athina.models.Examined;
 import athina.Account;
 import athina.Athina;
 import athina.models.AitimaDiorthosisGrade;

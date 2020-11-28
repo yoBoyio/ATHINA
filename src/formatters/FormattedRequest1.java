@@ -9,7 +9,7 @@ package formatters;
  *
  * @author dimi44
  */
-public class FormattedRequest {
+public class FormattedRequest1 {
     private  String professorName;
     private  String studentName;
     private  float  oldGrade;
@@ -18,7 +18,7 @@ public class FormattedRequest {
     private  String regid;
     private  int reqInxed;
     
-    public FormattedRequest(String professorName,String studentName,float  oldGrade,float newGrade,String exam,String regid,int reqInxed){
+    public FormattedRequest1(String professorName,String studentName,float  oldGrade,float newGrade,String exam,String regid,int reqInxed){
         this.professorName=professorName;
         this.studentName=studentName;
         this.oldGrade=oldGrade;

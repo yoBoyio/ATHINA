@@ -36,10 +36,8 @@ public class CoursesStudentController implements Initializable {
      */
     @Override
 
-    public void initialize(URL url, ResourceBundle rb) {        
-        if (firstTimeTwo){
-            
-         
+   
+    public void initialize(URL url, ResourceBundle rb) {
         
        if (firstTimeTwo){
 
@@ -50,7 +48,7 @@ public class CoursesStudentController implements Initializable {
         }
         firstTimeTwo = false;
     }  
-    }
+    
     
     public void backButtonPressed(ActionEvent event) {
         try {

@@ -1,16 +1,13 @@
-<<<<<<< Updated upstream:src/models/SMTP.java
 package models;
-import java.io.IOException;
-import java.util.*;
-=======
-package athina.models;
 
->>>>>>> Stashed changes:src/athina/models/SMTP.java
 import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
-public class SMTP{
-    public static void sendEmail(String name, String lastname, String username, String pass, String recepient) throws IOException {
+public class SMTP {
+    public static void sendEmail(String name, String lastname, String username, String pass, String recepient) {
         if (isValidEmailAddress(recepient)) {
             Properties properties = new Properties();
 
@@ -37,7 +34,7 @@ public class SMTP{
             }
         }
     }
-    private static Message prepareMessage(Session session, String emailUsarname, String name, String lastname, String username, String pass, String recipient) throws IOException {
+    private static Message prepareMessage(Session session, String emailUsarname, String name, String lastname, String username, String pass, String recipient){
         Message message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress(emailUsarname));
@@ -50,7 +47,6 @@ public class SMTP{
             e.printStackTrace();
         }
         return null;
-
     }
 
     private static boolean isValidEmailAddress(String email) {
@@ -63,5 +59,4 @@ public class SMTP{
         }
         return result;
     }
-
 }
