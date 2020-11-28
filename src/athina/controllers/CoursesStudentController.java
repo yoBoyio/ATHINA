@@ -16,37 +16,39 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author dimi44
+ * @author user
  */
 public class CoursesStudentController implements Initializable {
+    @FXML
+    private AnchorPane mathhmataPanel;
+    @FXML
+    private ListView mathhmataList=new ListView();
 
+    private boolean firstTimeTwo=true;
     /**
      * Initializes the controller class.
      */
-     @FXML
-    private ListView mathhmataList = new ListView();
-    private boolean firstTimeTwo = true;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         
-        if (firstTimeTwo){
+       if (firstTimeTwo){
             for (int i =0; i< Account.courses.length; i++){
                 if (Account.courses[i] != null )
                     mathhmataList.getItems().add(Account.courses[i]);
             }
         }
         firstTimeTwo = false;
-    }
-       public void backButtonPressed(ActionEvent event) {
+    }  
+    
+    
+    public void backButtonPressed(ActionEvent event) {
         try {
-          //  DiorthosiVathmologiasPage.selectedRegistration = selectedRegistration;
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterPage.fxml")));
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
