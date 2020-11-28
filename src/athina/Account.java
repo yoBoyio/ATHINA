@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package athina;
-import athina.controllers.Examined;
+import athina.models.Examined;
 import  athina.models.*;
+import java.io.IOException;
 import java.util.ArrayList;
 /**
  *
@@ -32,15 +33,15 @@ public class Account {
     }
     
     public void initializeData(){
-        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou",3 ,"173903");
-        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou",5 ,"165306");
-        students[2] = new Student("nnikou", "123","Nikos", "Nikou",3, "185401");
+        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou",3 ,"173903","aalexiou@it.teithe.gr");
+        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou",5 ,"165306","ddimitriou@it.teithe.gr");
+        students[2] = new Student("nnikou", "123","Nikos", "Nikou",3, "185401","nnikou@it.teithe.gr");
         
-        professors[0] = new Professor("vkostogl","123", "Vasileios", "Kostoglou");
-        professors[1] = new Professor("idel", "123","Ignatios", "Deligianis");
-        professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou");
+        professors[0] = new Professor("vkostogl","123", "Vasileios", "Kostoglou","vkostogl@teithe.gr");
+        professors[1] = new Professor("idel", "123","Ignatios", "Deligianis","idel@teithe.gr");
+        professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou","stoug@teithe.gr");
         
-            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou");
+            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou","gkakou@it.teithe.gr");
         
         courses[0] = new Course("072", "Epixeirisiaki Ereuna", 6, 7, professors[0]);
         courses[1] = new Course("023", "Antikeimenostrefis Programmatismos", 6, 2, professors[1]);
@@ -102,6 +103,30 @@ public class Account {
         return fullCourse;
     }
     
+    public static void insertProfessor(Professor professor) throws IOException {
+        for (int i=0; i<professors.length; i++){
+            if (professors[i] == null)
+                professors[i] = professor;
+                SMTP.sendEmail(Account.professors[i].getFirstName(), Account.professors[i].getLastName(), Account.professors[i].getUsername(), Account.professors[i].getPassword(), Account.professors[i].getEmail());
+        }
+    }
+    public static void insertStudent(Student student) throws IOException {
+        for (int i=0; i<students.length; i++) {
+            if (students[i] == null)
+                students[i] = student;
+
+                SMTP.sendEmail(Account.students[i].getFirstName(), Account.students[i].getLastName(), Account.students[i].getUsername(), Account.students[i].getPassword(), Account.students[i].getEmail());
+        }
+    }
+    
+    public static void insertAdmin(Admin admin) throws IOException {
+        for (int i=0; i<admins.length; i++){
+            if (admins[i] == null)
+                admins[i] = admin;
+                SMTP.sendEmail(Account.admins[i].getFirstName(), Account.admins[i].getLastName(), Account.admins[i].getUsername(),Account.admins[i].getPassword(), Account.admins[i].getEmail());
+                break;
+        }
+    }
     private static boolean courseExists(String id)
     {
         for(Course course : courses)

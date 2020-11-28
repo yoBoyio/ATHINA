@@ -26,7 +26,7 @@
       </Label>
       <TextField fx:id="newGradeLbl" layoutX="211.0" layoutY="325.0" prefHeight="25.0" prefWidth="156.0" />
       <Button layoutX="406.0" layoutY="325.0" mnemonicParsing="false" onAction="#submitNewGrade" text="Υποβολη" />
-      <Label fx:id="errorLbl" layoutX="171.0" layoutY="411.0" prefHeight="27.0" prefWidth="345.0">
+      <Label fx:id="errorLbl" layoutX="116.0" layoutY="411.0" prefHeight="27.0" prefWidth="400.0">
          <font>
             <Font size="18.0" />
          </font>

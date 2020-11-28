@@ -49,7 +49,7 @@ public class MasterPageController implements Initializable {
     private Button viewCourseGradesButton;
             
     @FXML
-    private Button adduserButton;   
+    private Button adduserButton,registrationButton,coursesButton;   
     
     @FXML   
     private Label usernameLabel;
@@ -80,24 +80,95 @@ public class MasterPageController implements Initializable {
              pane.getChildren().remove(finalizeGradeButton);
              pane.getChildren().remove(viewCourseGradesButton);
              usernameLabel.setText(Athina.user.getUsername());
+             pane.getChildren().remove(registrationButton);
+             pane.getChildren().remove(coursesButton);
         }
             else if (Athina.user instanceof Admin) {
                 pane.getChildren().remove(statistikaButton);
                 pane.getChildren().remove(viewCourseGradesButton);
                 pane.getChildren().remove(diorthoVathButton);
+                pane.getChildren().remove(registrationButton);
+                
                  usernameLabel.setText("Διαχειριστής");
-            
+                 pane.getChildren().remove(coursesButton);
+                 
         }
-            else{
-                pane.getChildren().remove(statistikaButton);
-                pane.getChildren().remove(diorthoVathButton);
-                pane.getChildren().remove(finalizeGradeButton);
-                pane.getChildren().remove(viewCourseGradesButton);
-                pane.getChildren().remove(adduserButton);
-            }
+        
         
         
     }    
+    public void addUse(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/RegisterNewUser.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Εισαγωγη Νεου Χρηστη");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    public void coursesStudent(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/CoursesStudent.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Τα μαθήματά μου");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    public void myStats(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/ProfessorMainPage.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Τα μαθήματά μου");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    
+    public void goToreg(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/RegistrationsPage.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Δηλωσεις");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    public void myCoursesStudent(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/StudentMainPage.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Τα μαθήματά μου");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    
       public void myCourses(ActionEvent event){
         
         try{

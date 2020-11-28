@@ -5,6 +5,7 @@
  */
 package athina.models;
 
+import athina.Account;
 import java.util.ArrayList;
 
 /**
@@ -17,17 +18,24 @@ public class Student extends User{
     private  String am;
     
     public Student(String username,String password, String firstName,
-        String lastName,int currentSemester,String am) {
-        super(username, password, firstName, lastName);
+        String lastName,int currentSemester,String am,String email) {
+        super(username, password, firstName, lastName,email);
         this.currentSemester = currentSemester;
         this.am = am;
     }
     
-    /*public ArrayList<CourseRegistration> getRegistrations(){
-        int i=0;
-        ArrayList <CourseRegistration> currentRegistrations=new ArrayList<>();
-        
-    }*/
+  
+    public CourseRegistration[] getBathmologies(String username){
+        CourseRegistration courseRegistration[] = new CourseRegistration[Account.registrations.length];
+        int y =0;
+        for (int i = 0; i <Account.registrations.length; i++){
+            if (Account.registrations[i] != null && username.equals(Account.registrations[i].getStudent().getUsername())){
+                courseRegistration[y] = Account.registrations[i];
+                y++;
+            }
+        }
+        return courseRegistration;
+    }
     
     public String getAM(){
         return am;

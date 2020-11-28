@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Professor extends  User{
     
     private Course  [] coursesTaught;
-    public Professor(String username,String password, String firstName, String lastName) {
-        super(username, password, firstName, lastName);
+    public Professor(String username,String password, String firstName, String lastName, String email) {
+        super(username, password, firstName, lastName,email);
     }
      public  ArrayList<Course> getCoursesTaught(){
         int i=0;
