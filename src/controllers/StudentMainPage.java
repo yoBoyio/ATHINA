@@ -159,6 +159,7 @@ public class StudentMainPage {
         }
     }
 
+<<<<<<< Updated upstream:src/controllers/StudentMainPage.java
     @FXML
     private void dhlwshMathhmatwn(){
         if (!epilegmenaMath.getItems().isEmpty()){
@@ -200,4 +201,8 @@ public class StudentMainPage {
             e.printStackTrace();
         }
     }
+=======
+ 
+    
+>>>>>>> Stashed changes:src/athina/controllers/StudentMainPage.java
 }

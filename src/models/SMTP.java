@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream:src/models/SMTP.java
 package models;
 import java.io.IOException;
 import java.util.*;
+=======
+package athina.models;
+
+>>>>>>> Stashed changes:src/athina/models/SMTP.java
 import javax.mail.*;
 import javax.mail.internet.*;
 

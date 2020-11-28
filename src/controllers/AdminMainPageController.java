@@ -7,6 +7,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import athina.Account;
 import athina.Athina;
+<<<<<<< Updated upstream:src/controllers/AdminMainPageController.java
+=======
+import athina.models.Admin;
+import athina.models.Professor;
+import athina.models.Student;
+>>>>>>> Stashed changes:src/athina/controllers/RegisterNewUserController.java
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -23,7 +29,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.*;
 
+<<<<<<< Updated upstream:src/controllers/AdminMainPageController.java
 public class AdminMainPageController implements Initializable {
+=======
+
+/**
+ * FXML Controller class
+ *
+ * @author dimi44
+ */
+public class RegisterNewUserController implements Initializable {
+>>>>>>> Stashed changes:src/athina/controllers/RegisterNewUserController.java
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,6 +93,7 @@ public class AdminMainPageController implements Initializable {
             }
         });
         first = false;
+<<<<<<< Updated upstream:src/controllers/AdminMainPageController.java
     }
 
     private void setVis(){
@@ -91,6 +108,15 @@ public class AdminMainPageController implements Initializable {
             Student temp = new Student(nameField.getText().substring(0,1) + lastnameField.getText(),
                     "123", nameField.getText(), lastnameField.getText(), emailField.getText(),Integer.parseInt(examField.getText()),
                             dtf.format(now));
+=======
+    }    
+  @FXML
+    private void addEgr(ActionEvent event){
+        userEnrollPanel.setVisible(true);
+        if (userRolle.getValue().equals("Φοιτητής")){
+            Student temp = new Student(nameField.getText().substring(0,1) + lastnameField.getText(),
+                    "123", nameField.getText(), lastnameField.getText(), Integer.valueOf(examField.getText()), "123", emailField.getText());
+>>>>>>> Stashed changes:src/athina/controllers/RegisterNewUserController.java
                 Account.insertStudent(temp);
 
         }else if(userRolle.getValue().equals("Καθηγητής")){

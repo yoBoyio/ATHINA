@@ -59,17 +59,40 @@ public class Account {
     }
     
     
-    public static void insertProfessor(Professor professor) throws IOException {
+    public static void insertAdmin(Admin admin) {
+        for (int i=0; i<admins.length; i++){
+            if (admins[i] == null){
+                admins[i] = admin;
+                SMTP.sendEmail(admins[i].getFirstName(), admins[i].getLastName(), admins[i].getUsername(),admins[i].getPassword(), admins[i].getEmail());
+                break;
+            }
+
+        }
+    }
+    
+    
+    public static void insertProfessor(Professor professor) {
         for (int i=0; i<professors.length; i++){
             if (professors[i] == null)
                 professors[i] = professor;
+<<<<<<< Updated upstream
                 SMTP.sendEmail(Account.professors[i].getFirstName(), Account.professors[i].getLastName(), Account.professors[i].getUsername(), Account.professors[i].getPassword(), Account.professors[i].getEmail());
         }
     }
      public static void insertStudent(Student student) throws IOException {
+=======
+                SMTP.sendEmail(professors[i].getFirstName(), professors[i].getLastName(), professors[i].getUsername(), professors[i].getPassword(), professors[i].getEmail());
+                break;
+            }
+
+        }
+    }
+     public static void insertStudent(Student student) {
+>>>>>>> Stashed changes
         for (int i=0; i<students.length; i++) {
             if (students[i] == null)
                 students[i] = student;
+<<<<<<< Updated upstream
 
                 SMTP.sendEmail(Account.students[i].getFirstName(), Account.students[i].getLastName(), Account.students[i].getUsername(), Account.students[i].getPassword(), Account.students[i].getEmail());
         }
@@ -102,6 +125,12 @@ public class Account {
             fullCourse[i] = course;
             i++;
                
+=======
+                SMTP.sendEmail(Account.students[i].getFirstName(),Account.students[i].getLastName(),Account.students[i].getUsername(),Account.students[i].getPassword(), Account.students[i].getEmail());
+                break;
+            }
+
+>>>>>>> Stashed changes
         }
         return fullCourse;
     }
