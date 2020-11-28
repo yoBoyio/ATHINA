@@ -5,7 +5,6 @@
  */
 package athina.models;
 
-import athina.controllers.Examined;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +19,8 @@ public class CourseRegistration {
     private Examined examined [];
     private String dateRegistered;
     private String id;
+    private float newGrade;
+    
     
     public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered,String id) {
         this.student = student;
@@ -28,6 +29,8 @@ public class CourseRegistration {
         this.dateRegistered = dateRegistered;
         this.examined=new Examined[10];
         this.id=id;
+        grade=-1;
+        newGrade=-1;
     }
     public String getId(){
         return id;
@@ -44,6 +47,10 @@ public class CourseRegistration {
         return course;
     }
 
+    
+    public String getRegistrationSemester() {
+        return registrationSemester;
+    }
     public void setGrade(float grade) {
         this.grade = grade;
       
@@ -80,8 +87,29 @@ public class CourseRegistration {
         return grade;
     }
 
+     public String toString2() {
+        return
+                " bathmos=" + grade +
+                ", kainBathmos=" + newGrade ;
+    }
+
+    public float getNewGrade() {
+        return newGrade;
+    }
+     
     @Override
     public String toString() {
-        return "CourseRegistration{" + "student=" + student + ", course=" + course + ", registrationSemester=" + registrationSemester + ", grade=" + grade + '}';
+        if (grade != -1) {
+            if (newGrade != -1){
+                return
+                        course + " | " +
+                        "" + registrationSemester + '\'' +" | " +
+                        " " + grade + "-παλιός " + " | " + newGrade + "-νεος" ;
+            }
+            return " " +
+                    course + " | " +
+                    " " + registrationSemester + " | " + '\''  + "" + grade;
+        }
+        return "";
     }
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package athina;
-import athina.controllers.Examined;
+import athina.models.Examined;
 import  athina.models.*;
 import java.util.ArrayList;
 /**
@@ -32,15 +32,15 @@ public class Account {
     }
     
     public void initializeData(){
-        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou",3 ,"173903");
-        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou",5 ,"165306");
-        students[2] = new Student("nnikou", "123","Nikos", "Nikou",3, "185401");
+        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou",3 ,"173903","aalexiou@it.teithe.gr");
+        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou",5 ,"165306","ddimitriou@it.teithe.gr");
+        students[2] = new Student("nnikou", "123","Nikos", "Nikou",3, "185401","nnikou@it.teithe.gr");
         
-        professors[0] = new Professor("vkostogl","123", "Vasileios", "Kostoglou");
-        professors[1] = new Professor("idel", "123","Ignatios", "Deligianis");
-        professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou");
+        professors[0] = new Professor("vkostogl","123", "Vasileios", "Kostoglou","vkostogl@teithe.gr");
+        professors[1] = new Professor("idel", "123","Ignatios", "Deligianis","idel@teithe.gr");
+        professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou","stoug@teithe.gr");
         
-            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou");
+            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou","gkakou@it.teithe.gr");
         
         courses[0] = new Course("072", "Epixeirisiaki Ereuna", 6, 7, professors[0]);
         courses[1] = new Course("023", "Antikeimenostrefis Programmatismos", 6, 2, professors[1]);

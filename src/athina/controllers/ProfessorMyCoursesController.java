@@ -5,6 +5,7 @@
  */
 package athina.controllers;
 
+import athina.models.Examined;
 import athina.Account;
 import athina.Athina;
 import athina.models.CourseRegistration;
@@ -185,6 +186,7 @@ public class ProfessorMyCoursesController implements Initializable {
     }
     
     public  void searchAM(ActionEvent event) {
+        
         FormattedExams formattedExams= tableExams.getSelectionModel().getSelectedItem();
         String selectedId=formattedExams.getId();
         String am=amField.getText();
