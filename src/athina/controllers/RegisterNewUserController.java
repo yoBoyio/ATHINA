@@ -18,11 +18,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -35,7 +40,7 @@ public class RegisterNewUserController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private TextField usernameLabel, lastnameLabel, nameLabel, emailLabel, nameField, lastnameField, emailField, examField;
+    private TextField  nameField, lastnameField, emailField, examField;
     @FXML
     private ChoiceBox userRolle = new ChoiceBox();
     @FXML
@@ -45,6 +50,8 @@ public class RegisterNewUserController implements Initializable {
     private boolean first = true;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     LocalDateTime now = LocalDateTime.now();
+    @FXML
+    private AnchorPane userEnrollPanel;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        if (first){
@@ -82,6 +89,20 @@ public class RegisterNewUserController implements Initializable {
             Admin temp = new Admin(nameField.getText().substring(0,1) + lastnameField.getText(),
                     "123", nameField.getText(), lastnameField.getText(), emailField.getText());
             Account.insertAdmin(temp);
+        }
+    }
+
+    @FXML
+    public void backButtonPressed(ActionEvent event) {
+        try {
+          //  DiorthosiVathmologiasPage.selectedRegistration = selectedRegistration;
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterPage.fxml")));
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setTitle("Athina");
+            window.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

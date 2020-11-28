@@ -32,6 +32,14 @@ public class CourseRegistration {
         grade=-1;
         newGrade=-1;
     }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setNewGrade(float newGrade) {
+        this.newGrade = newGrade;
+    }
     public String getId(){
         return id;
     }

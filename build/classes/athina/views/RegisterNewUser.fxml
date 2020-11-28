@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userEnrollPanel" prefHeight="471.0" prefWidth="675.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="athina.controllers.RegisterNewUserController">
+<AnchorPane fx:id="userEnrollPanel" prefHeight="471.0" prefWidth="675.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.RegisterNewUserController">
    <children>
       <ChoiceBox fx:id="userRolle" layoutX="68.0" layoutY="102.0" prefWidth="150.0" />
       <Label fx:id="nameLabelEgr" layoutX="164.0" layoutY="150.0" text="Όνομα">
@@ -41,5 +41,6 @@
          </font>
       </Label>
       <Label layoutX="68.0" layoutY="78.0" text="Παρακαλώ, διαλέξτε τον ρόλο του χρήστη." />
+      <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Επιστροφη" />
    </children>
 </AnchorPane>

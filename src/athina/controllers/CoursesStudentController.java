@@ -35,9 +35,14 @@ public class CoursesStudentController implements Initializable {
      * Initializes the controller class.
      */
     @Override
+
+    public void initialize(URL url, ResourceBundle rb) {        
+        if (firstTimeTwo){
+=======
     public void initialize(URL url, ResourceBundle rb) {
         
        if (firstTimeTwo){
+
             for (int i =0; i< Account.courses.length; i++){
                 if (Account.courses[i] != null )
                     mathhmataList.getItems().add(Account.courses[i]);

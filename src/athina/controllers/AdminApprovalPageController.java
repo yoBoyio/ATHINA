@@ -115,6 +115,7 @@ public class AdminApprovalPageController implements Initializable {
                 int i=0;
                 for(CourseRegistration cr:courseRegistration){
                     if(cr.getId().equals(regID)){
+                        Account.registrations[i].setNewGrade(formattedRequest.getOldGrade());
                         Account.registrations[i].setGrade(formattedRequest.getNewGrade());
                         Account.requestNewGrade[formattedRequest.getReqIndex()]=null;
                         errorLabel.setText("Το αιτημα εγκριθηκε");
