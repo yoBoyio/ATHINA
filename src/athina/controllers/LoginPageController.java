@@ -48,6 +48,7 @@ public class LoginPageController implements Initializable {
     }   
     
     //ελεγχος αν τα πεδια ειναι κενα 
+   
     public void loginButtonPressed(ActionEvent event)
     {
         String username=usernameField.getText();

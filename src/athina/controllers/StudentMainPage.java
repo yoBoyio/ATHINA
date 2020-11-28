@@ -138,6 +138,18 @@ public class StudentMainPage implements Initializable  {
             sunoloMath.setText(String.valueOf(arithmosMath));
         }
     }
+    
+        public void backButtonPressed(ActionEvent event) {
+        try {
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterPage.fxml")));
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setTitle("Athina");
+            window.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
    public void backButtonPressed(ActionEvent event) {
