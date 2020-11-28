@@ -33,9 +33,7 @@ public class CoursesStudentController implements Initializable {
     private boolean firstTimeTwo = true;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+    public void initialize(URL url, ResourceBundle rb) {        
         if (firstTimeTwo){
             for (int i =0; i< Account.courses.length; i++){
                 if (Account.courses[i] != null )

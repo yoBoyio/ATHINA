@@ -25,22 +25,18 @@ import javafx.fxml.Initializable;
 
 public class StudentMainPage implements Initializable  {
 
+    private TextField usernameLabel;
+
     @FXML
-    private TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathField, sunoloDM, sunoloMath,errorField;
+    private TextField lastnameLabel, nameLabel, examLabel, emailLabel, mesosOrosText,dmTextField, perasmMathField, sunoloDM, sunoloMath;
+    private AnchorPane arxikhSelidaPanel;
     @FXML
-    private AnchorPane arxikhSelidaPanel, bathmologiesPanel, mathhmataPanel, dhlwseisPanel;
+    private AnchorPane bathmologiesPanel, dhlwseisPanel;
     @FXML
     private ListView bathmList = new ListView();
-    @FXML
     private ListView mathhmataList = new ListView();
-    @FXML
     private ListView olaTaMath = new ListView();
-    @FXML
     private ListView epilegmenaMath = new ListView();
-    @FXML
-    private Button addBtn, removeBtn;
-    @FXML
-    private Label confirmText;
 
     private int dm = 0;
     private int arithmosMath = 0;
@@ -85,7 +81,6 @@ public class StudentMainPage implements Initializable  {
         }
         firstTime = false;
     }
-   @FXML
     private void setLabels(ActionEvent actionEvent) {
      
         arxikhSelidaPanel.setVisible(true);
@@ -97,7 +92,6 @@ public class StudentMainPage implements Initializable  {
         emailLabel.setText(student.getEmail());
     }
 
-    @FXML
     private void emfMathhmatwn(ActionEvent event){
         
         if (firstTimeTwo){
@@ -109,7 +103,6 @@ public class StudentMainPage implements Initializable  {
         firstTimeTwo = false;
     }
 
-    @FXML
     private void dhlwseisMath(ActionEvent event){
         
         dhlwseisPanel.setVisible(true);
@@ -134,7 +127,6 @@ public class StudentMainPage implements Initializable  {
     }
 
 
-    @FXML
     private void addMathima(ActionEvent event){
         Course course = (Course) olaTaMath.getSelectionModel().getSelectedItem();
         if (olaTaMath.getSelectionModel().getSelectedItem() != null && (course.getCredits() + dm) <= 42){
@@ -147,5 +139,17 @@ public class StudentMainPage implements Initializable  {
         }
     }
 
+    @FXML
+   public void backButtonPressed(ActionEvent event) {
+        try {
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterPage.fxml")));
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setTitle("Athina - Τα μαθηματα μου");
+            window.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

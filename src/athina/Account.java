@@ -105,26 +105,30 @@ public class Account {
     
     public static void insertProfessor(Professor professor) throws IOException {
         for (int i=0; i<professors.length; i++){
-            if (professors[i] == null)
+            if (professors[i] == null){
                 professors[i] = professor;
                 SMTP.sendEmail(Account.professors[i].getFirstName(), Account.professors[i].getLastName(), Account.professors[i].getUsername(), Account.professors[i].getPassword(), Account.professors[i].getEmail());
+                break;
+            }
         }
     }
     public static void insertStudent(Student student) throws IOException {
         for (int i=0; i<students.length; i++) {
-            if (students[i] == null)
+            if (students[i] == null){
                 students[i] = student;
-
                 SMTP.sendEmail(Account.students[i].getFirstName(), Account.students[i].getLastName(), Account.students[i].getUsername(), Account.students[i].getPassword(), Account.students[i].getEmail());
+                break;
+            }
         }
     }
     
     public static void insertAdmin(Admin admin) throws IOException {
         for (int i=0; i<admins.length; i++){
-            if (admins[i] == null)
+            if (admins[i] == null){
                 admins[i] = admin;
                 SMTP.sendEmail(Account.admins[i].getFirstName(), Account.admins[i].getLastName(), Account.admins[i].getUsername(),Account.admins[i].getPassword(), Account.admins[i].getEmail());
                 break;
+        }
         }
     }
     private static boolean courseExists(String id)

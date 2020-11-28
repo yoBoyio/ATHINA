@@ -1,7 +1,10 @@
-package athina.models;
-import java.util.*;
+package models;
+
 import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 public class SMTP {
     public static void sendEmail(String name, String lastname, String username, String pass, String recepient) {
@@ -43,9 +46,7 @@ public class SMTP {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
         return null;
-
     }
 
     private static boolean isValidEmailAddress(String email) {
