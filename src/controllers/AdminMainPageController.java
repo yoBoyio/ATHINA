@@ -85,7 +85,7 @@ public class AdminMainPageController implements Initializable {
     }
 
     @FXML
-    private void addEgr(ActionEvent event){
+    private void addEgr(ActionEvent event) throws IOException {
         userEnrollPanel.setVisible(true);
         if (userRolle.getValue().equals("Φοιτητής")){
             Student temp = new Student(nameField.getText().substring(0,1) + lastnameField.getText(),
@@ -102,7 +102,6 @@ public class AdminMainPageController implements Initializable {
                     "123", nameField.getText(), lastnameField.getText(), emailField.getText());
             Account.insertAdmin(temp);
         }
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     @FXML

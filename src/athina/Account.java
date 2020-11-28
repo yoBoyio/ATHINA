@@ -1,6 +1,8 @@
 package athina;
 import models.*;
 
+import java.io.IOException;
+
 public class Account {
     public static User[] users;
     public static Student[] students;
@@ -47,7 +49,7 @@ public class Account {
         registrations[5].setBathmos(3);
         registrations[0].setKainBathmos(9);
     }
-    public static void insertAdmin(Admin admin) {
+    public static void insertAdmin(Admin admin) throws IOException {
         for (int i=0; i<admins.length; i++){
             if (admins[i] == null)
                 admins[i] = admin;
@@ -57,14 +59,14 @@ public class Account {
     }
     
     
-    public static void insertProfessor(Professor professor) {
+    public static void insertProfessor(Professor professor) throws IOException {
         for (int i=0; i<professors.length; i++){
             if (professors[i] == null)
                 professors[i] = professor;
                 SMTP.sendEmail(Account.professors[i].getFirstName(), Account.professors[i].getLastName(), Account.professors[i].getUsername(), Account.professors[i].getPassword(), Account.professors[i].getEmail());
         }
     }
-     public static void insertStudent(Student student) {
+     public static void insertStudent(Student student) throws IOException {
         for (int i=0; i<students.length; i++) {
             if (students[i] == null)
                 students[i] = student;

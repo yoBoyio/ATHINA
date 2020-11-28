@@ -22,7 +22,7 @@ import java.io.IOException;
 public class ProfessorMainPage {
 
     @FXML
-    private AnchorPane arxikhSelidaPanel, mathhmataPanel;
+    private AnchorPane arxikhSelidaPanel, mathhmataPanel, diorthMath;
     @FXML
     private TextField usernameLabel, lastnameLabel, nameLabel, emailLabel, amField;
     @FXML
@@ -30,12 +30,13 @@ public class ProfessorMainPage {
     @FXML
     private ListView studensList;
     @FXML
-    private Button searchBtn;
+    private Button searchBtn, diorthBtn;
     @FXML
     private TextArea statistics;
     @FXML
     private ToggleGroup group;
-
+    @FXML
+    private RadioButton diorthRadio, mathRadio;
 
     private float sumBathmwn = 0;
     private int sumFoitPouEdwsan = 0;
@@ -56,7 +57,16 @@ public class ProfessorMainPage {
     @FXML
     private void getMathhmata(ActionEvent event) {
         setVis();
+        diorthBtn.setVisible(false);
+        diorthBtn.setDisable(false);
         mathhmataPanel.setVisible(true);
+        if (diorthRadio.isSelected()) {
+            statistics.setVisible(false);
+            diorthBtn.setVisible(true);
+        }else{
+            statistics.setVisible(true);
+            diorthBtn.setVisible(false);
+        }
         choiceBoxMath.getItems().clear();
         choiceBoxHmer.getItems().clear();
         studensList.getItems().clear();
@@ -113,10 +123,16 @@ public class ProfessorMainPage {
                             if (Account.registrations[i].getKainBathmos() >=5) toPerasan++;
                         }
             }
-        }statistics.setText("Μέσος όρος: \t" +  String.format("%.2f", sumBathmwn/sumFoitPouEdwsan) + "\n"
-                            + "Σύνολο φοιτητών που το δήλωσαν: \t" + sumFoit + "\n"
-                            + "Σύνολο φοιτητών που έγραψαν: \t" + sumFoitPouEdwsan + "\n"
-                            + "Σύνολο φοιτητών που το πέρασαν: \t" + toPerasan);
+            if (diorthRadio.isSelected()){
+               statistics.setVisible(false);
+            }else{
+                statistics.setVisible(true);
+                statistics.setText("Μέσος όρος: \t" +  String.format("%.2f", sumBathmwn/sumFoitPouEdwsan) + "\n"
+                        + "Σύνολο φοιτητών που το δήλωσαν: \t" + sumFoit + "\n"
+                        + "Σύνολο φοιτητών που έγραψαν: \t" + sumFoitPouEdwsan + "\n"
+                        + "Σύνολο φοιτητών που το πέρασαν: \t" + toPerasan);
+            }
+        }
     }
 
     @FXML
@@ -135,7 +151,6 @@ public class ProfessorMainPage {
         mathhmataPanel.setVisible(false);
     }
 
-
     @FXML
     private void logoutButtonPressed(ActionEvent event)
     {
@@ -153,6 +168,4 @@ public class ProfessorMainPage {
             e.printStackTrace();
         }
     }
-
-
 }

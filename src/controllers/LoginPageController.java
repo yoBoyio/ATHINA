@@ -139,30 +139,4 @@ public class LoginPageController implements Initializable {
         errorLabel.setText("Τα στοιχεία εισόδου δεν είναι σωστά");
     }
     
-    
-    //εδω ειναι η κεντρικη σελιδα 
-    
-    public void setLabels(){
-
-    }
-
-
-    public void gotToMaster(ActionEvent event)
-    {
-        try{
-            Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/views/MasterPage.fxml")));
-            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.setResizable(false);
-            window.setTitle("Athina");
-            window.show();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-  
-    
-    
 }

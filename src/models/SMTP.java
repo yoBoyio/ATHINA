@@ -1,10 +1,11 @@
 package models;
+import java.io.IOException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-public class SMTP {
-    public static void sendEmail(String name, String lastname, String username, String pass, String recepient) {
+public class SMTP{
+    public static void sendEmail(String name, String lastname, String username, String pass, String recepient) throws IOException {
         if (isValidEmailAddress(recepient)) {
             Properties properties = new Properties();
 
@@ -31,7 +32,7 @@ public class SMTP {
             }
         }
     }
-    private static Message prepareMessage(Session session, String emailUsarname, String name, String lastname, String username, String pass, String recipient){
+    private static Message prepareMessage(Session session, String emailUsarname, String name, String lastname, String username, String pass, String recipient) throws IOException {
         Message message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress(emailUsarname));
@@ -43,7 +44,6 @@ public class SMTP {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
         return null;
 
     }
@@ -58,4 +58,5 @@ public class SMTP {
         }
         return result;
     }
+
 }
