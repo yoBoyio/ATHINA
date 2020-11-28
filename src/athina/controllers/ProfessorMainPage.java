@@ -135,7 +135,7 @@ public class ProfessorMainPage implements Initializable {
                             + "Σύνολο φοιτητών που το πέρασαν: \t" + toPerasan);
     }
 
-    
+    @FXML
     private void searchStudent(ActionEvent event){
         for (int j = 0; j< Account.registrations.length; j++){
             if (Account.registrations[j] != null && Account.registrations[j].getStudent().getUsername().equals(amField.getText())){
